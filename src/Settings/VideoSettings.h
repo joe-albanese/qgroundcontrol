@@ -73,7 +73,7 @@ public:
     static const char* videoSource3DRSolo;
     static const char* videoSourceParrotDiscovery;
     static const char* videoSourceYuneecMantisG;
-
+    static const char* videoSourceObscuraCamFPV;
 signals:
     void streamConfiguredChanged    (bool configured);
 

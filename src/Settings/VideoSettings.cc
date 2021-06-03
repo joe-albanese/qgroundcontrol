@@ -29,7 +29,7 @@ const char* VideoSettings::videoSourceMPEGTS            = "MPEG-TS (h.264) Video
 const char* VideoSettings::videoSource3DRSolo           = "3DR Solo (requires restart)";
 const char* VideoSettings::videoSourceParrotDiscovery   = "Parrot Discovery";
 const char* VideoSettings::videoSourceYuneecMantisG     = "Yuneec Mantis G";
-
+const char* VideoSettings::videoSourceObscuraCamFPV     = "Obscura Cam FPV";
 DECLARE_SETTINGGROUP(Video, "Video")
 {
     qmlRegisterUncreatableType<VideoSettings>("QGroundControl.SettingsManager", 1, 0, "VideoSettings", "Reference only");
@@ -47,6 +47,7 @@ DECLARE_SETTINGGROUP(Video, "Video")
     videoSourceList.append(videoSource3DRSolo);
     videoSourceList.append(videoSourceParrotDiscovery);
     videoSourceList.append(videoSourceYuneecMantisG);
+    videoSourceList.append(videoSourceObscuraCamFPV);
 #endif
 #ifndef QGC_DISABLE_UVC
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();

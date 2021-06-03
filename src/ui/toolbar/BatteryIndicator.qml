@@ -91,6 +91,10 @@ Item {
                 return ""
             }
 
+	    function getBatteryVoltageText() {
+		return qsTr(battery.voltage.valueString + battery.voltage.units)
+	    }
+
             QGCColoredImage {
                 anchors.top:        parent.top
                 anchors.bottom:     parent.bottom
@@ -102,7 +106,7 @@ Item {
             }
 
             QGCLabel {
-                text:                   getBatteryPercentageText()
+                text:                   getBatteryVoltageText()
                 font.pointSize:         ScreenTools.mediumFontPointSize
                 color:                  getBatteryColor()
                 anchors.verticalCenter: parent.verticalCenter

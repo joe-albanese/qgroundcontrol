@@ -51,6 +51,7 @@ Item {
             anchors.centerIn:   parent
         }
     }
+
     Rectangle {
         anchors.fill:   parent
         color:          "black"

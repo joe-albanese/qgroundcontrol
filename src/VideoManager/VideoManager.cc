@@ -535,6 +535,7 @@ VideoManager::isGStreamer()
             videoSource == VideoSettings::videoSource3DRSolo ||
             videoSource == VideoSettings::videoSourceParrotDiscovery ||
             videoSource == VideoSettings::videoSourceYuneecMantisG ||
+	    videoSource == VideoSettings::videoSourceObscuraCamFPV ||
             autoStreamConfigured();
 #else
     return false;
@@ -596,7 +597,7 @@ VideoManager::_initVideo()
     if (widget != nullptr && _videoReceiver[1] != nullptr) {
         _videoSink[1] = qgcApp()->toolbox()->corePlugin()->createVideoSink(this, widget);
         if (_videoSink[1] != nullptr) {
-            if (_videoStarted[1]) {
+             if (_videoStarted[1]) {
                 _videoReceiver[1]->startDecoding(_videoSink[1]);
             }
         } else {
@@ -695,6 +696,8 @@ VideoManager::_updateSettings(unsigned id)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("udp://0.0.0.0:8888"));
     else if (source == VideoSettings::videoSourceYuneecMantisG)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://192.168.42.1:554/live"));
+    else if (source == VideoSettings::videoSourceObscuraCamFPV)
+	    settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->tcpUrl()->rawValue().toString()));
 
     return settingsChanged;
 }
