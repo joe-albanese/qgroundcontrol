@@ -198,7 +198,7 @@ bool VideoSettings::streamConfigured(void)
         return udpPort()->rawValue().toInt() != 0;
     }
     //-- If RTSP, check for URL
-    if(vSource == videoSourceRTSP) {
+    if(vSource == videoSourceRTSP || vSource == videoSourceObscuraCamFPV) {
         qCDebug(VideoManagerLog) << "Testing configuration for RTSP Stream:" << rtspUrl()->rawValue().toString();
         return !rtspUrl()->rawValue().toString().isEmpty();
     }

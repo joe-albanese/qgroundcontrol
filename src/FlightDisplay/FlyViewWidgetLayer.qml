@@ -144,6 +144,33 @@ Item {
             }
         ]
 
+        QGCRadioButton {
+            id:             neutralModeRadio
+            text:           qsTr("Neutral")
+            checked:        true
+            textColor:      mapPal.text
+        }
+        QGCRadioButton {
+            id:             mapModeRadio
+            text:           qsTr("Mapping")
+            checked:        false
+            textColor:      mapPal.text
+	    anchors.top:    neutralModeRadio.bottom
+        }
+        QGCRadioButton {
+            id:             targetModeRadio
+            text:           qsTr("Targeting")
+            checked:        false
+            textColor:      mapPal.text
+	    anchors.top:    mapModeRadio.bottom
+        }
+        QGCRadioButton {
+            id:             roiModeRadio
+            text:           qsTr("ROI")
+            checked:        false
+            textColor:      mapPal.text
+	    anchors.top:    targetModeRadio.bottom
+        }
         property bool _verticalCenter: !QGroundControl.settingsManager.flyViewSettings.alternateInstrumentPanel.rawValue
     }
 
