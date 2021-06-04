@@ -535,7 +535,7 @@ VideoManager::isGStreamer()
             videoSource == VideoSettings::videoSource3DRSolo ||
             videoSource == VideoSettings::videoSourceParrotDiscovery ||
             videoSource == VideoSettings::videoSourceYuneecMantisG ||
-	    videoSource == VideoSettings::videoSourceObscuraCamFPV ||
+            videoSource == VideoSettings::videoSourceObscuraCamFPV ||
             autoStreamConfigured();
 #else
     return false;
@@ -678,8 +678,7 @@ VideoManager::_updateSettings(unsigned id)
             }
             return settingsChanged;
         }
-    }
-    QString source = _videoSettings->videoSource()->rawValue().toString();
+    }    QString source = _videoSettings->videoSource()->rawValue().toString();
     if (source == VideoSettings::videoSourceUDPH264)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("udp://0.0.0.0:%1").arg(_videoSettings->udpPort()->rawValue().toInt()));
     else if (source == VideoSettings::videoSourceUDPH265)
@@ -697,7 +696,7 @@ VideoManager::_updateSettings(unsigned id)
     else if (source == VideoSettings::videoSourceYuneecMantisG)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://192.168.42.1:554/live"));
     else if (source == VideoSettings::videoSourceObscuraCamFPV)
-	settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+        settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->rtspUrl()->rawValue().toString()));
 
     return settingsChanged;
 }

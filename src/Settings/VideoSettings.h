@@ -54,6 +54,7 @@ public:
     Q_PROPERTY(QString  tcpVideoSource          READ tcpVideoSource         CONSTANT)
     Q_PROPERTY(QString  mpegtsVideoSource       READ mpegtsVideoSource      CONSTANT)
     Q_PROPERTY(QString  disabledVideoSource     READ disabledVideoSource    CONSTANT)
+    Q_PROPERTY(QString  obscuraVideoSource      READ obscuraVideoSource     CONSTANT)
 
     bool     streamConfigured       ();
     QString  rtspVideoSource        () { return videoSourceRTSP; }
@@ -62,7 +63,7 @@ public:
     QString  tcpVideoSource         () { return videoSourceTCP; }
     QString  mpegtsVideoSource      () { return videoSourceMPEGTS; }
     QString  disabledVideoSource    () { return videoDisabled; }
-
+    QString  obscuraVideoSource     () { return videoSourceObscuraCamFPV; }
     static const char* videoSourceNoVideo;
     static const char* videoDisabled;
     static const char* videoSourceUDPH264;

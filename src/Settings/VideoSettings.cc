@@ -30,6 +30,7 @@ const char* VideoSettings::videoSource3DRSolo           = "3DR Solo (requires re
 const char* VideoSettings::videoSourceParrotDiscovery   = "Parrot Discovery";
 const char* VideoSettings::videoSourceYuneecMantisG     = "Yuneec Mantis G";
 const char* VideoSettings::videoSourceObscuraCamFPV     = "Obscura Cam FPV";
+
 DECLARE_SETTINGGROUP(Video, "Video")
 {
     qmlRegisterUncreatableType<VideoSettings>("QGroundControl.SettingsManager", 1, 0, "VideoSettings", "Reference only");
