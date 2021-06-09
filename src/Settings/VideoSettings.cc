@@ -30,6 +30,7 @@ const char* VideoSettings::videoSource3DRSolo           = "3DR Solo (requires re
 const char* VideoSettings::videoSourceParrotDiscovery   = "Parrot Discovery";
 const char* VideoSettings::videoSourceYuneecMantisG     = "Yuneec Mantis G";
 const char* VideoSettings::videoSourceObscuraCamFPV     = "Obscura Cam FPV";
+const char* VideoSettings::videoSourceZ3Encoder         = "Z3 Encoder";
 
 DECLARE_SETTINGGROUP(Video, "Video")
 {
@@ -49,6 +50,7 @@ DECLARE_SETTINGGROUP(Video, "Video")
     videoSourceList.append(videoSourceParrotDiscovery);
     videoSourceList.append(videoSourceYuneecMantisG);
     videoSourceList.append(videoSourceObscuraCamFPV);
+    videoSourceList.append(videoSourceZ3Encoder);
 #endif
 #ifndef QGC_DISABLE_UVC
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
@@ -199,7 +201,7 @@ bool VideoSettings::streamConfigured(void)
         return udpPort()->rawValue().toInt() != 0;
     }
     //-- If RTSP, check for URL
-    if(vSource == videoSourceRTSP || vSource == videoSourceObscuraCamFPV) {
+    if(vSource == videoSourceRTSP || vSource == videoSourceObscuraCamFPV || vSource == videoSourceZ3Encoder) {
         qCDebug(VideoManagerLog) << "Testing configuration for RTSP Stream:" << rtspUrl()->rawValue().toString();
         return !rtspUrl()->rawValue().toString().isEmpty();
     }

@@ -536,6 +536,8 @@ VideoManager::isGStreamer()
             videoSource == VideoSettings::videoSourceParrotDiscovery ||
             videoSource == VideoSettings::videoSourceYuneecMantisG ||
             videoSource == VideoSettings::videoSourceObscuraCamFPV ||
+            videoSource == VideoSettings::videoSourceZ3Encoder ||
+
             autoStreamConfigured();
 #else
     return false;
@@ -697,6 +699,9 @@ VideoManager::_updateSettings(unsigned id)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://192.168.42.1:554/live"));
     else if (source == VideoSettings::videoSourceObscuraCamFPV)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+    else if (source == VideoSettings::videoSourceZ3Encoder)
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+
 
     return settingsChanged;
 }
