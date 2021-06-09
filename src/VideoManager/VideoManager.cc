@@ -537,6 +537,10 @@ VideoManager::isGStreamer()
             videoSource == VideoSettings::videoSourceYuneecMantisG ||
             videoSource == VideoSettings::videoSourceObscuraCamFPV ||
             videoSource == VideoSettings::videoSourceZ3Encoder ||
+            videoSource == VideoSettings::videoSourceWirisVisible ||
+            videoSource == VideoSettings::videoSourceWirisThermal ||
+
+
 
             autoStreamConfigured();
 #else
@@ -698,9 +702,13 @@ VideoManager::_updateSettings(unsigned id)
     else if (source == VideoSettings::videoSourceYuneecMantisG)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://192.168.42.1:554/live"));
     else if (source == VideoSettings::videoSourceObscuraCamFPV)
-        settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+        settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1/").arg(_videoSettings->rtspUrl()->rawValue().toString()));
     else if (source == VideoSettings::videoSourceZ3Encoder)
-            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1/z3-1.sdp").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+    else if (source == VideoSettings::videoSourceWirisVisible)
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1:8554/visible").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+    else if (source == VideoSettings::videoSourceWirisThermal)
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1:8554/thermal").arg(_videoSettings->rtspUrl()->rawValue().toString()));
 
 
     return settingsChanged;

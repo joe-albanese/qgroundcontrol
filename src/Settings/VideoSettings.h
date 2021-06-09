@@ -56,16 +56,20 @@ public:
     Q_PROPERTY(QString  disabledVideoSource     READ disabledVideoSource    CONSTANT)
     Q_PROPERTY(QString  obscuraVideoSource      READ obscuraVideoSource     CONSTANT)
     Q_PROPERTY(QString  z3VideoSource           READ z3VideoSource          CONSTANT)
+    Q_PROPERTY(QString  wirisVisibleVideoSource      READ wirisVisibleVideoSource          CONSTANT)
+    Q_PROPERTY(QString  wirisThermalVideoSource      READ wirisThermalVideoSource          CONSTANT)
 
-    bool     streamConfigured       ();
-    QString  rtspVideoSource        () { return videoSourceRTSP; }
-    QString  udp264VideoSource      () { return videoSourceUDPH264; }
-    QString  udp265VideoSource      () { return videoSourceUDPH265; }
-    QString  tcpVideoSource         () { return videoSourceTCP; }
-    QString  mpegtsVideoSource      () { return videoSourceMPEGTS; }
-    QString  disabledVideoSource    () { return videoDisabled; }
-    QString  obscuraVideoSource     () { return videoSourceObscuraCamFPV; }
-    QString  z3VideoSource          () { return videoSourceZ3Encoder; }
+    bool     streamConfigured        ();
+    QString  rtspVideoSource         () { return videoSourceRTSP; }
+    QString  udp264VideoSource       () { return videoSourceUDPH264; }
+    QString  udp265VideoSource       () { return videoSourceUDPH265; }
+    QString  tcpVideoSource          () { return videoSourceTCP; }
+    QString  mpegtsVideoSource       () { return videoSourceMPEGTS; }
+    QString  disabledVideoSource     () { return videoDisabled; }
+    QString  obscuraVideoSource      () { return videoSourceObscuraCamFPV; }
+    QString  z3VideoSource           () { return videoSourceZ3Encoder; }
+    QString  wirisVisibleVideoSource () { return videoSourceWirisVisible; }
+    QString  wirisThermalVideoSource () { return videoSourceWirisThermal; }
 
     static const char* videoSourceNoVideo;
     static const char* videoDisabled;
@@ -79,6 +83,8 @@ public:
     static const char* videoSourceYuneecMantisG;
     static const char* videoSourceObscuraCamFPV;
     static const char* videoSourceZ3Encoder;
+    static const char* videoSourceWirisVisible;
+    static const char* videoSourceWirisThermal;
 
 signals:
     void streamConfiguredChanged    (bool configured);
