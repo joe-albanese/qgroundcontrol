@@ -47,17 +47,17 @@ public:
     };
     Q_ENUM(VideoDecoderOptions)
 
-    Q_PROPERTY(bool     streamConfigured        READ streamConfigured       NOTIFY streamConfiguredChanged)
-    Q_PROPERTY(QString  rtspVideoSource         READ rtspVideoSource        CONSTANT)
-    Q_PROPERTY(QString  udp264VideoSource       READ udp264VideoSource      CONSTANT)
-    Q_PROPERTY(QString  udp265VideoSource       READ udp265VideoSource      CONSTANT)
-    Q_PROPERTY(QString  tcpVideoSource          READ tcpVideoSource         CONSTANT)
-    Q_PROPERTY(QString  mpegtsVideoSource       READ mpegtsVideoSource      CONSTANT)
-    Q_PROPERTY(QString  disabledVideoSource     READ disabledVideoSource    CONSTANT)
-    Q_PROPERTY(QString  obscuraVideoSource      READ obscuraVideoSource     CONSTANT)
-    Q_PROPERTY(QString  z3VideoSource           READ z3VideoSource          CONSTANT)
-    Q_PROPERTY(QString  wirisVisibleVideoSource      READ wirisVisibleVideoSource          CONSTANT)
-    Q_PROPERTY(QString  wirisThermalVideoSource      READ wirisThermalVideoSource          CONSTANT)
+    Q_PROPERTY(bool     streamConfigured            READ streamConfigured           NOTIFY streamConfiguredChanged)
+    Q_PROPERTY(QString  rtspVideoSource             READ rtspVideoSource            CONSTANT)
+    Q_PROPERTY(QString  udp264VideoSource           READ udp264VideoSource          CONSTANT)
+    Q_PROPERTY(QString  udp265VideoSource           READ udp265VideoSource          CONSTANT)
+    Q_PROPERTY(QString  tcpVideoSource              READ tcpVideoSource             CONSTANT)
+    Q_PROPERTY(QString  mpegtsVideoSource           READ mpegtsVideoSource          CONSTANT)
+    Q_PROPERTY(QString  disabledVideoSource         READ disabledVideoSource        CONSTANT)
+    Q_PROPERTY(QString  obscuraVideoSource          READ obscuraVideoSource         CONSTANT)
+    Q_PROPERTY(QString  z3VideoSource               READ z3VideoSource              CONSTANT)
+    Q_PROPERTY(QString  wirisVisibleVideoSource     READ wirisVisibleVideoSource    CONSTANT)
+    Q_PROPERTY(QString  wirisThermalVideoSource     READ wirisThermalVideoSource    CONSTANT)
 
     bool     streamConfigured        ();
     QString  rtspVideoSource         () { return videoSourceRTSP; }

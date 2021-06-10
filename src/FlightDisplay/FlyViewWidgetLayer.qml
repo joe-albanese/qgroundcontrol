@@ -144,32 +144,28 @@ Item {
             }
         ]
 
-        QGCRadioButton {
+        QGCButton {
             id:             neutralModeRadio
-            text:           qsTr("Neutral")
-            checked:        true
-            textColor:      mapPal.text
+            text:           qsTr("Camera Up")
+            onClicked:    QGroundControl.videoManager.setGimbalStraight()
         }
-        QGCRadioButton {
+        QGCButton {
             id:             mapModeRadio
-            text:           qsTr("Mapping")
-            checked:        false
-            textColor:      mapPal.text
-	    anchors.top:    neutralModeRadio.bottom
+            text:           qsTr("Camera Down")
+            anchors.top:    neutralModeRadio.bottom
+            onClicked:    QGroundControl.videoManager.setGimbalDown()
         }
-        QGCRadioButton {
+        QGCButton {
             id:             targetModeRadio
-            text:           qsTr("Targeting")
-            checked:        false
-            textColor:      mapPal.text
-	    anchors.top:    mapModeRadio.bottom
+            text:           qsTr("RC Targeting")
+            anchors.top:    mapModeRadio.bottom
+            onClicked:      QGroundControl.videoManager.setGimbalRC()
         }
-        QGCRadioButton {
+        QGCButton {
             id:             roiModeRadio
             text:           qsTr("ROI")
-            checked:        false
-            textColor:      mapPal.text
-	    anchors.top:    targetModeRadio.bottom
+            anchors.top:    targetModeRadio.bottom
+            onClicked:      QGroundControl.videoManager.setGimbalROI()
         }
         property bool _verticalCenter: !QGroundControl.settingsManager.flyViewSettings.alternateInstrumentPanel.rawValue
     }

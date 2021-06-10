@@ -102,7 +102,10 @@ public:
 
     // Override from QGCTool
     virtual void        setToolbox          (QGCToolbox *toolbox);
-
+    Q_INVOKABLE void setGimbalDown  ();
+    Q_INVOKABLE void setGimbalStraight    ();
+    Q_INVOKABLE void setGimbalRC    ();
+    Q_INVOKABLE void setGimbalROI    ();
     Q_INVOKABLE void startVideo     ();
     Q_INVOKABLE void stopVideo      ();
 

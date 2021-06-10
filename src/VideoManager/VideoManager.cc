@@ -247,6 +247,27 @@ void VideoManager::_cleanupOldVideos()
     }
 #endif
 }
+//-----------------------------------------------------------------------------
+void
+VideoManager::setGimbalDown()
+{
+    _activeVehicle->gimbalControlValue((double)9000, (double)0);
+}
+void
+VideoManager::setGimbalStraight()
+{
+    _activeVehicle->gimbalControlValue((double)0, (double)0);
+}
+void
+VideoManager::setGimbalRC()
+{
+    _activeVehicle->gimbalSetRC();
+}
+void
+VideoManager::setGimbalROI()
+{
+    _activeVehicle->gimbalSetROI();
+}
 
 //-----------------------------------------------------------------------------
 void
