@@ -247,6 +247,31 @@ void VideoManager::_cleanupOldVideos()
     }
 #endif
 }
+//-----------------------------------------------------------------------------
+void
+VideoManager::setGimbalDown()
+{
+    if(_activeVehicle != NULL)
+    _activeVehicle->gimbalControlValue((double)9000, (double)0);
+}
+void
+VideoManager::setGimbalStraight()
+{
+    if(_activeVehicle != NULL)
+    _activeVehicle->gimbalControlValue((double)0, (double)0);
+}
+void
+VideoManager::setGimbalRC()
+{
+    if(_activeVehicle != NULL)
+    _activeVehicle->gimbalSetRC();
+}
+void
+VideoManager::setGimbalROI()
+{
+    if(_activeVehicle != NULL)
+    _activeVehicle->gimbalSetROI();
+}
 
 //-----------------------------------------------------------------------------
 void
@@ -535,6 +560,13 @@ VideoManager::isGStreamer()
             videoSource == VideoSettings::videoSource3DRSolo ||
             videoSource == VideoSettings::videoSourceParrotDiscovery ||
             videoSource == VideoSettings::videoSourceYuneecMantisG ||
+            videoSource == VideoSettings::videoSourceObscuraCamFPV ||
+            videoSource == VideoSettings::videoSourceZ3Encoder ||
+            videoSource == VideoSettings::videoSourceWirisVisible ||
+            videoSource == VideoSettings::videoSourceWirisThermal ||
+
+
+
             autoStreamConfigured();
 #else
     return false;
@@ -596,7 +628,7 @@ VideoManager::_initVideo()
     if (widget != nullptr && _videoReceiver[1] != nullptr) {
         _videoSink[1] = qgcApp()->toolbox()->corePlugin()->createVideoSink(this, widget);
         if (_videoSink[1] != nullptr) {
-            if (_videoStarted[1]) {
+             if (_videoStarted[1]) {
                 _videoReceiver[1]->startDecoding(_videoSink[1]);
             }
         } else {
@@ -677,8 +709,7 @@ VideoManager::_updateSettings(unsigned id)
             }
             return settingsChanged;
         }
-    }
-    QString source = _videoSettings->videoSource()->rawValue().toString();
+    }    QString source = _videoSettings->videoSource()->rawValue().toString();
     if (source == VideoSettings::videoSourceUDPH264)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("udp://0.0.0.0:%1").arg(_videoSettings->udpPort()->rawValue().toInt()));
     else if (source == VideoSettings::videoSourceUDPH265)
@@ -695,6 +726,15 @@ VideoManager::_updateSettings(unsigned id)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("udp://0.0.0.0:8888"));
     else if (source == VideoSettings::videoSourceYuneecMantisG)
         settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://192.168.42.1:554/live"));
+    else if (source == VideoSettings::videoSourceObscuraCamFPV)
+        settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1/").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+    else if (source == VideoSettings::videoSourceZ3Encoder)
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1/z3-1.sdp").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+    else if (source == VideoSettings::videoSourceWirisVisible)
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1:8554/visible").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+    else if (source == VideoSettings::videoSourceWirisThermal)
+            settingsChanged |= _updateVideoUri(0, QStringLiteral("rtsp://%1:8554/thermal").arg(_videoSettings->rtspUrl()->rawValue().toString()));
+
 
     return settingsChanged;
 }

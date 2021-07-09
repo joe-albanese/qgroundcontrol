@@ -410,6 +410,8 @@ public:
     Q_INVOKABLE void setPIDTuningTelemetryMode(PIDTuningTelemetryMode mode);
 
     Q_INVOKABLE void gimbalControlValue (double pitch, double yaw);
+    Q_INVOKABLE void gimbalSetROI       ();
+    Q_INVOKABLE void gimbalSetRC        ();
     Q_INVOKABLE void gimbalPitchStep    (int direction);
     Q_INVOKABLE void gimbalYawStep      (int direction);
     Q_INVOKABLE void centerGimbal       ();

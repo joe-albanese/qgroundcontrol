@@ -47,7 +47,7 @@ Item {
     property real   _margins:               ScreenTools.defaultFontPixelWidth / 2
     property real   _toolsMargin:           ScreenTools.defaultFontPixelWidth * 0.75
     property rect   _centerViewport:        Qt.rect(0, 0, width, height)
-    property real   _rightPanelWidth:       ScreenTools.defaultFontPixelWidth * 30
+    property real   _rightPanelWidth:       ScreenTools.defaultFontPixelWidth * 50
 
     QGCToolInsets {
         id:                     _totalToolInsets
@@ -144,6 +144,29 @@ Item {
             }
         ]
 
+        QGCRadioButton {
+            id:             neutralModeRadio
+            text:           qsTr("Camera Up")
+            onClicked:    QGroundControl.videoManager.setGimbalStraight()
+        }
+        QGCRadioButton {
+            id:             mapModeRadio
+            text:           qsTr("Camera Down")
+            anchors.top:    neutralModeRadio.bottom
+            onClicked:    QGroundControl.videoManager.setGimbalDown()
+        }
+        QGCRadioButton {
+            id:             targetModeRadio
+            text:           qsTr("RC Targeting")
+            anchors.top:    mapModeRadio.bottom
+            onClicked:      QGroundControl.videoManager.setGimbalRC()
+        }
+        QGCRadioButton {
+            id:             roiModeRadio
+            text:           qsTr("ROI")
+            anchors.top:    targetModeRadio.bottom
+            onClicked:      QGroundControl.videoManager.setGimbalROI()
+        }
         property bool _verticalCenter: !QGroundControl.settingsManager.flyViewSettings.alternateInstrumentPanel.rawValue
     }
 

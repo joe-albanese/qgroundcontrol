@@ -276,6 +276,7 @@ public:
 
     virtual void        setZoomLevel        (qreal level);
     virtual void        setFocusLevel       (qreal level);
+    virtual void        setGimbalDown       ();
     virtual void        setCameraMode       (CameraMode mode);
     virtual void        setPhotoMode        (PhotoMode mode);
     virtual void        setPhotoLapse       (qreal interval);

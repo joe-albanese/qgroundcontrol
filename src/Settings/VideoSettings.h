@@ -47,21 +47,29 @@ public:
     };
     Q_ENUM(VideoDecoderOptions)
 
-    Q_PROPERTY(bool     streamConfigured        READ streamConfigured       NOTIFY streamConfiguredChanged)
-    Q_PROPERTY(QString  rtspVideoSource         READ rtspVideoSource        CONSTANT)
-    Q_PROPERTY(QString  udp264VideoSource       READ udp264VideoSource      CONSTANT)
-    Q_PROPERTY(QString  udp265VideoSource       READ udp265VideoSource      CONSTANT)
-    Q_PROPERTY(QString  tcpVideoSource          READ tcpVideoSource         CONSTANT)
-    Q_PROPERTY(QString  mpegtsVideoSource       READ mpegtsVideoSource      CONSTANT)
-    Q_PROPERTY(QString  disabledVideoSource     READ disabledVideoSource    CONSTANT)
+    Q_PROPERTY(bool     streamConfigured            READ streamConfigured           NOTIFY streamConfiguredChanged)
+    Q_PROPERTY(QString  rtspVideoSource             READ rtspVideoSource            CONSTANT)
+    Q_PROPERTY(QString  udp264VideoSource           READ udp264VideoSource          CONSTANT)
+    Q_PROPERTY(QString  udp265VideoSource           READ udp265VideoSource          CONSTANT)
+    Q_PROPERTY(QString  tcpVideoSource              READ tcpVideoSource             CONSTANT)
+    Q_PROPERTY(QString  mpegtsVideoSource           READ mpegtsVideoSource          CONSTANT)
+    Q_PROPERTY(QString  disabledVideoSource         READ disabledVideoSource        CONSTANT)
+    Q_PROPERTY(QString  obscuraVideoSource          READ obscuraVideoSource         CONSTANT)
+    Q_PROPERTY(QString  z3VideoSource               READ z3VideoSource              CONSTANT)
+    Q_PROPERTY(QString  wirisVisibleVideoSource     READ wirisVisibleVideoSource    CONSTANT)
+    Q_PROPERTY(QString  wirisThermalVideoSource     READ wirisThermalVideoSource    CONSTANT)
 
-    bool     streamConfigured       ();
-    QString  rtspVideoSource        () { return videoSourceRTSP; }
-    QString  udp264VideoSource      () { return videoSourceUDPH264; }
-    QString  udp265VideoSource      () { return videoSourceUDPH265; }
-    QString  tcpVideoSource         () { return videoSourceTCP; }
-    QString  mpegtsVideoSource      () { return videoSourceMPEGTS; }
-    QString  disabledVideoSource    () { return videoDisabled; }
+    bool     streamConfigured        ();
+    QString  rtspVideoSource         () { return videoSourceRTSP; }
+    QString  udp264VideoSource       () { return videoSourceUDPH264; }
+    QString  udp265VideoSource       () { return videoSourceUDPH265; }
+    QString  tcpVideoSource          () { return videoSourceTCP; }
+    QString  mpegtsVideoSource       () { return videoSourceMPEGTS; }
+    QString  disabledVideoSource     () { return videoDisabled; }
+    QString  obscuraVideoSource      () { return videoSourceObscuraCamFPV; }
+    QString  z3VideoSource           () { return videoSourceZ3Encoder; }
+    QString  wirisVisibleVideoSource () { return videoSourceWirisVisible; }
+    QString  wirisThermalVideoSource () { return videoSourceWirisThermal; }
 
     static const char* videoSourceNoVideo;
     static const char* videoDisabled;
@@ -73,6 +81,10 @@ public:
     static const char* videoSource3DRSolo;
     static const char* videoSourceParrotDiscovery;
     static const char* videoSourceYuneecMantisG;
+    static const char* videoSourceObscuraCamFPV;
+    static const char* videoSourceZ3Encoder;
+    static const char* videoSourceWirisVisible;
+    static const char* videoSourceWirisThermal;
 
 signals:
     void streamConfiguredChanged    (bool configured);

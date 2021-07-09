@@ -271,6 +271,14 @@ QGCCameraControl::batteryRemainingStr()
 
 //-----------------------------------------------------------------------------
 void
+QGCCameraControl::setGimbalDown()
+{
+    if(!_resetting) {
+        qCDebug(CameraControlLog) << "setGimbalDown";
+        _vehicle->gimbalControlValue(90, 0);
+    }
+}
+void
 QGCCameraControl::setCameraMode(CameraMode mode)
 {
     if(!_resetting) {
